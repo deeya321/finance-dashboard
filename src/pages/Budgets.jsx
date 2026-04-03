@@ -12,7 +12,7 @@ function BudgetRow({ category, budget, spent, onEdit, onDelete }) {
   const remaining = budget - spent
 
   return (
-    <div className="bg-white rounded-xl border border-gray-200 p-5">
+    <div className="card-hover bg-white rounded-xl border border-gray-200 p-5">
       <div className="flex items-center justify-between mb-3">
         <div className="flex items-center gap-3">
           <span
@@ -24,14 +24,14 @@ function BudgetRow({ category, budget, spent, onEdit, onDelete }) {
         <div className="flex items-center gap-2">
           <button
             onClick={() => onEdit(category, budget)}
-            className="w-8 h-8 flex items-center justify-center rounded-lg
+            className="btn-active w-8 h-8 flex items-center justify-center rounded-lg
                        hover:bg-gray-100 text-gray-400 hover:text-gray-600 transition-colors"
           >
             <RiEditLine size={16} />
           </button>
           <button
             onClick={() => onDelete(category)}
-            className="w-8 h-8 flex items-center justify-center rounded-lg
+            className="btn-active w-8 h-8 flex items-center justify-center rounded-lg
                        hover:bg-red-50 text-gray-400 hover:text-red-600 transition-colors"
           >
             <RiDeleteBinLine size={16} />
@@ -125,14 +125,14 @@ function AddBudgetModal({ onClose, existingBudgets }) {
         <div className="px-6 py-4 border-t border-gray-100 flex gap-2">
           <button
             onClick={onClose}
-            className="flex-1 py-2 text-sm font-medium text-gray-600 border border-gray-200
+            className="btn-active flex-1 py-2 text-sm font-medium text-gray-600 border border-gray-200
                        rounded-lg hover:bg-gray-50 transition-colors"
           >
             Cancel
           </button>
           <button
             onClick={handleSubmit}
-            className="flex-1 py-2 text-sm font-medium text-white bg-indigo-600
+            className="btn-active flex-1 py-2 text-sm font-medium text-white bg-indigo-600
                        rounded-lg hover:bg-indigo-700 transition-colors"
           >
             Set Budget
@@ -177,7 +177,7 @@ export default function Budgets() {
   }
 
   return (
-    <div className="space-y-4">
+    <div className="space-y-4 animate-fade-in-up">
       <div className="flex items-center justify-between">
         <div>
           <h1 className="text-xl font-bold text-gray-800">Budget Management</h1>
@@ -185,7 +185,7 @@ export default function Budgets() {
         </div>
         <button
           onClick={() => setShowModal(true)}
-          className="flex items-center gap-2 px-4 py-2 text-sm font-medium text-white
+          className="btn-active flex items-center gap-2 px-4 py-2 text-sm font-medium text-white
                      bg-indigo-600 rounded-lg hover:bg-indigo-700 transition-colors"
         >
           <RiAddLine size={18} />
@@ -196,11 +196,11 @@ export default function Budgets() {
       {Object.keys(budgets).length === 0 ? (
         <div className="bg-white rounded-xl border border-gray-200 p-12 text-center">
           <p className="text-gray-500 mb-4">No budgets set yet</p>
-          <button
-            onClick={() => setShowModal(true)}
-            className="inline-flex items-center gap-2 px-4 py-2 text-sm font-medium text-white
-                       bg-indigo-600 rounded-lg hover:bg-indigo-700 transition-colors"
-          >
+           <button
+             onClick={() => setShowModal(true)}
+             className="btn-active inline-flex items-center gap-2 px-4 py-2 text-sm font-medium text-white
+                        bg-indigo-600 rounded-lg hover:bg-indigo-700 transition-colors"
+           >
             <RiAddLine size={18} />
             Set Your First Budget
           </button>
@@ -247,20 +247,20 @@ export default function Budgets() {
               </div>
             </div>
             <div className="px-6 py-4 border-t border-gray-100 flex gap-2">
-              <button
-                onClick={() => { setEditCategory(null); setEditAmount("") }}
-                className="flex-1 py-2 text-sm font-medium text-gray-600 border border-gray-200
-                           rounded-lg hover:bg-gray-50 transition-colors"
-              >
-                Cancel
-              </button>
-              <button
-                onClick={handleEditSubmit}
-                className="flex-1 py-2 text-sm font-medium text-white bg-indigo-600
-                           rounded-lg hover:bg-indigo-700 transition-colors"
-              >
-                Update Budget
-              </button>
+               <button
+                 onClick={() => { setEditCategory(null); setEditAmount("") }}
+                 className="btn-active flex-1 py-2 text-sm font-medium text-gray-600 border border-gray-200
+                            rounded-lg hover:bg-gray-50 transition-colors"
+               >
+                 Cancel
+               </button>
+               <button
+                 onClick={handleEditSubmit}
+                 className="btn-active flex-1 py-2 text-sm font-medium text-white bg-indigo-600
+                            rounded-lg hover:bg-indigo-700 transition-colors"
+               >
+                 Update Budget
+               </button>
             </div>
           </div>
         </div>

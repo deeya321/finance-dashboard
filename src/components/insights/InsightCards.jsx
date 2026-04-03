@@ -49,7 +49,7 @@ export default function InsightCards({ insights }) {
       {cards.map((card) => (
         <div
           key={card.label}
-          className="bg-white rounded-xl border border-gray-200 p-5 flex items-start gap-4"
+          className="card-hover bg-white rounded-xl border border-gray-200 p-5 flex items-start gap-4"
         >
           <div className={`w-11 h-11 rounded-lg flex items-center justify-center shrink-0 ${colorMap[card.color]}`}>
             {card.icon}

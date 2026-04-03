@@ -83,82 +83,95 @@ export default function Dashboard() {
   )
 
   return (
-    <div className="space-y-6">
+    <div className="space-y-6 animate-fade-in-up">
 
       {/* Summary Cards */}
       <div className="grid grid-cols-1 sm:grid-cols-2 xl:grid-cols-4 gap-4">
-        <SummaryCard
-          title="Total Balance"  value={fmt(balance)}
-          subtitle="Jan – Apr 2025"
-          icon={<RiMoneyDollarCircleLine size={22} />} color="indigo"
-        />
-        <SummaryCard
-          title="Total Income"   value={fmt(totalIncome)}
-          subtitle="All sources"
-          icon={<RiArrowUpLine size={22} />} color="green"
-        />
-        <SummaryCard
-          title="Total Expenses" value={fmt(totalExpenses)}
-          subtitle="All categories"
-          icon={<RiArrowDownLine size={22} />} color="red"
-        />
-        <SummaryCard
-          title="Savings Rate"   value={`${savingsRate}%`}
-          subtitle="Of total income"
-          icon={<RiPercentLine size={22} />} color="teal"
-        />
+        <div className="animate-fade-in-up">
+          <SummaryCard
+            title="Total Balance"  value={fmt(balance)}
+            subtitle="Jan – Apr 2025"
+            icon={<RiMoneyDollarCircleLine size={22} />} color="indigo"
+          />
+        </div>
+        <div className="animate-fade-in-up-delay-1">
+          <SummaryCard
+            title="Total Income"   value={fmt(totalIncome)}
+            subtitle="All sources"
+            icon={<RiArrowUpLine size={22} />} color="green"
+          />
+        </div>
+        <div className="animate-fade-in-up-delay-2">
+          <SummaryCard
+            title="Total Expenses" value={fmt(totalExpenses)}
+            subtitle="All categories"
+            icon={<RiArrowDownLine size={22} />} color="red"
+          />
+        </div>
+        <div className="animate-fade-in-up-delay-3">
+          <SummaryCard
+            title="Savings Rate"   value={`${savingsRate}%`}
+            subtitle="Of total income"
+            icon={<RiPercentLine size={22} />} color="teal"
+          />
+        </div>
       </div>
 
       {/* Charts */}
       <div className="grid grid-cols-1 lg:grid-cols-3 gap-4">
 
         {/* Line Chart */}
-        <div className="lg:col-span-2 bg-white rounded-xl border border-gray-200 p-5">
-          <h2 className="text-base font-semibold text-gray-800 mb-1">Monthly Balance Trend</h2>
-          <p className="text-xs text-gray-400 mb-4">Net cash flow per month</p>
-          <ResponsiveContainer width="100%" height={240}>
-            <LineChart data={trendData} margin={{ top: 5, right: 20, left: 0, bottom: 5 }}>
-              <CartesianGrid strokeDasharray="3 3" stroke="#f0f0f0" />
-              <XAxis dataKey="month" tick={{ fontSize: 12, fill: "#9ca3af" }} axisLine={false} tickLine={false} />
-              <YAxis tick={{ fontSize: 12, fill: "#9ca3af" }} axisLine={false} tickLine={false}
-                tickFormatter={(v) => `₹${(v / 1000).toFixed(1)}k`} />
-              <Tooltip content={<LineTooltip />} />
-              <Line type="monotone" dataKey="balance" stroke="#6366f1" strokeWidth={2.5}
-                dot={{ fill: "#6366f1", r: 4 }} activeDot={{ r: 6 }} />
-            </LineChart>
-          </ResponsiveContainer>
+        <div className="lg:col-span-2 animate-fade-in-up-delay-1">
+          <div className="bg-white rounded-xl border border-gray-200 p-5">
+            <h2 className="text-base font-semibold text-gray-800 mb-1">Monthly Balance Trend</h2>
+            <p className="text-xs text-gray-400 mb-4">Net cash flow per month</p>
+            <ResponsiveContainer width="100%" height={240}>
+              <LineChart data={trendData} margin={{ top: 5, right: 20, left: 0, bottom: 5 }}>
+                <CartesianGrid strokeDasharray="3 3" stroke="#f0f0f0" />
+                <XAxis dataKey="month" tick={{ fontSize: 12, fill: "#9ca3af" }} axisLine={false} tickLine={false} />
+                <YAxis tick={{ fontSize: 12, fill: "#9ca3af" }} axisLine={false} tickLine={false}
+                  tickFormatter={(v) => `₹${(v / 1000).toFixed(1)}k`} />
+                <Tooltip content={<LineTooltip />} />
+                <Line type="monotone" dataKey="balance" stroke="#6366f1" strokeWidth={2.5}
+                  dot={{ fill: "#6366f1", r: 4 }} activeDot={{ r: 6 }} />
+              </LineChart>
+            </ResponsiveContainer>
+          </div>
         </div>
 
         {/* Pie Chart */}
-        <div className="bg-white rounded-xl border border-gray-200 p-5">
-          <h2 className="text-base font-semibold text-gray-800 mb-1">Spending Breakdown</h2>
-          <p className="text-xs text-gray-400 mb-4">By category</p>
-          <ResponsiveContainer width="100%" height={160}>
-            <PieChart>
-              <Pie data={categoryData} cx="50%" cy="50%"
-                innerRadius={45} outerRadius={75} paddingAngle={2} dataKey="value">
-                {categoryData.map((entry, i) => <Cell key={i} fill={entry.fill} />)}
-              </Pie>
-              <Tooltip content={<PieTooltip />} />
-            </PieChart>
-          </ResponsiveContainer>
-          <div className="mt-3 space-y-1.5">
-            {categoryData.slice(0, 5).map((item) => (
-              <div key={item.name} className="flex items-center justify-between text-xs">
-                <div className="flex items-center gap-2">
-                  <span className="w-2.5 h-2.5 rounded-sm shrink-0" style={{ backgroundColor: item.fill }} />
-                  <span className="text-gray-600">{item.name}</span>
+        <div className="animate-fade-in-up-delay-2">
+          <div className="bg-white rounded-xl border border-gray-200 p-5">
+            <h2 className="text-base font-semibold text-gray-800 mb-1">Spending Breakdown</h2>
+            <p className="text-xs text-gray-400 mb-4">By category</p>
+            <ResponsiveContainer width="100%" height={160}>
+              <PieChart>
+                <Pie data={categoryData} cx="50%" cy="50%"
+                  innerRadius={45} outerRadius={75} paddingAngle={2} dataKey="value">
+                  {categoryData.map((entry, i) => <Cell key={i} fill={entry.fill} />)}
+                </Pie>
+                <Tooltip content={<PieTooltip />} />
+              </PieChart>
+            </ResponsiveContainer>
+            <div className="mt-3 space-y-1.5">
+              {categoryData.slice(0, 5).map((item) => (
+                <div key={item.name} className="flex items-center justify-between text-xs">
+                  <div className="flex items-center gap-2">
+                    <span className="w-2.5 h-2.5 rounded-sm shrink-0" style={{ backgroundColor: item.fill }} />
+                    <span className="text-gray-600">{item.name}</span>
+                  </div>
+                  <span className="text-gray-800 font-medium">{fmt(item.value)}</span>
                 </div>
-                <span className="text-gray-800 font-medium">{fmt(item.value)}</span>
-              </div>
-            ))}
+              ))}
+            </div>
           </div>
         </div>
       </div>
 
       {/* Recent Transactions */}
-      <div className="bg-white rounded-xl border border-gray-200 p-5">
-        <h2 className="text-base font-semibold text-gray-800 mb-4">Recent Transactions</h2>
+      <div className="animate-fade-in-up-delay-3">
+        <div className="bg-white rounded-xl border border-gray-200 p-5">
+          <h2 className="text-base font-semibold text-gray-800 mb-4">Recent Transactions</h2>
         {recentTxns.length === 0 ? (
           <p className="text-sm text-gray-400 text-center py-6">No transactions yet.</p>
         ) : (
@@ -180,7 +193,8 @@ export default function Dashboard() {
               </div>
             ))}
           </div>
-        )}
+          )}
+        </div>
       </div>
 
     </div>

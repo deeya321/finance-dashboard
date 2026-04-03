@@ -19,7 +19,7 @@ function CustomTooltip({ active, payload, label }) {
 
 export default function MonthlyBarChart({ data }) {
   return (
-    <div className="bg-white rounded-xl border border-gray-200 p-5">
+    <div className="card-hover bg-white rounded-xl border border-gray-200 p-5">
       <h2 className="text-base font-semibold text-gray-800 mb-1">
         Income vs Expenses
       </h2>

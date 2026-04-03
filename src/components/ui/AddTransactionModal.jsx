@@ -50,7 +50,7 @@ export default function AddTransactionModal({ onClose }) {
           <h2 className="text-base font-semibold text-gray-800">Add Transaction</h2>
           <button
             onClick={onClose}
-            className="w-8 h-8 flex items-center justify-center rounded-lg
+            className="btn-active w-8 h-8 flex items-center justify-center rounded-lg
                        hover:bg-gray-100 text-gray-400 hover:text-gray-600 transition-colors"
           >
             <RiCloseLine size={18} />
@@ -74,7 +74,7 @@ export default function AddTransactionModal({ onClose }) {
                 <button
                   key={t}
                   onClick={() => setForm((p) => ({ ...p, type: t }))}
-                  className={`flex-1 py-2 rounded-lg text-sm font-medium border transition-all capitalize
+                  className={`btn-active flex-1 py-2 rounded-lg text-sm font-medium border transition-all capitalize
                     ${form.type === t
                       ? t === "expense"
                         ? "bg-red-50 text-red-600 border-red-200"
@@ -156,14 +156,14 @@ export default function AddTransactionModal({ onClose }) {
         <div className="px-6 py-4 border-t border-gray-100 flex gap-2">
           <button
             onClick={onClose}
-            className="flex-1 py-2 text-sm font-medium text-gray-600 border border-gray-200
+            className="btn-active flex-1 py-2 text-sm font-medium text-gray-600 border border-gray-200
                        rounded-lg hover:bg-gray-50 transition-colors"
           >
             Cancel
           </button>
           <button
             onClick={submit}
-            className="flex-1 py-2 text-sm font-medium text-white bg-indigo-600
+            className="btn-active flex-1 py-2 text-sm font-medium text-white bg-indigo-600
                        rounded-lg hover:bg-indigo-700 transition-colors"
           >
             Add Transaction

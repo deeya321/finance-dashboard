@@ -53,7 +53,7 @@ export default function Transactions() {
   }
 
   return (
-    <div className="space-y-4">
+    <div className="space-y-4 animate-fade-in-up">
       <div className="flex items-center justify-between">
         <TransactionTopBar
           count={filtered.length}
@@ -62,7 +62,7 @@ export default function Transactions() {
         />
         <button
           onClick={handleExport}
-          className="flex items-center gap-2 px-4 py-2 text-sm font-medium text-gray-700
+          className="btn-active flex items-center gap-2 px-4 py-2 text-sm font-medium text-gray-700
                      bg-white border border-gray-200 rounded-lg hover:bg-gray-50 transition-colors"
         >
           <RiDownloadLine size={18} />

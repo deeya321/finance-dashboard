@@ -9,7 +9,7 @@ export default function TransactionRow({ txn, role }) {
   const dispatch = useDispatch()
 
   return (
-    <tr className="hover:bg-gray-50 transition-colors">
+    <tr className="hover:bg-gray-50 transition-colors duration-200 ease-in-out">
 
       {/* Date */}
       <td className="px-5 py-3.5 text-gray-500 whitespace-nowrap">
@@ -47,12 +47,12 @@ export default function TransactionRow({ txn, role }) {
       {/* Admin: delete */}
       {role === "admin" && (
         <td className="px-5 py-3.5 text-right">
-          <button
-            onClick={() => dispatch(deleteTransaction(txn.id))}
-            className="p-1.5 rounded-lg text-gray-400 hover:text-red-500
-                       hover:bg-red-50 transition-colors"
-            title="Delete transaction"
-          >
+            <button
+              onClick={() => dispatch(deleteTransaction(txn.id))}
+              className="btn-active p-1.5 rounded-lg text-gray-400 hover:text-red-500
+                         hover:bg-red-50 transition-colors"
+              title="Delete transaction"
+            >
             <RiDeleteBinLine size={15} />
           </button>
         </td>

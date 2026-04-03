@@ -24,7 +24,7 @@ function DeltaBadge({ current, previous }) {
 
 export default function MonthlyComparison({ data }) {
   return (
-    <div className="bg-white rounded-xl border border-gray-200 p-5">
+    <div className="card-hover bg-white rounded-xl border border-gray-200 p-5">
       <h2 className="text-base font-semibold text-gray-800 mb-1">
         Month-by-Month Comparison
       </h2>
@@ -45,7 +45,7 @@ export default function MonthlyComparison({ data }) {
           </thead>
           <tbody className="divide-y divide-gray-50">
             {data.map((row, i) => (
-              <tr key={row.month} className="hover:bg-gray-50 transition-colors">
+              <tr key={row.month} className="hover:bg-gray-50 transition-colors duration-200 ease-in-out">
                 <td className="py-3 font-medium text-gray-700">{row.month}</td>
                 <td className="py-3 text-right text-green-600 font-medium">
                   {fmt(row.income)}

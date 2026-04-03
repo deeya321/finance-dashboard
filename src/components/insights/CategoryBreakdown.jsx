@@ -5,7 +5,7 @@ export default function CategoryBreakdown({ data }) {
   const max = data[0]?.value || 1
 
   return (
-    <div className="bg-white rounded-xl border border-gray-200 p-5">
+    <div className="card-hover bg-white rounded-xl border border-gray-200 p-5">
       <h2 className="text-base font-semibold text-gray-800 mb-1">
         Top Spending Categories
       </h2>

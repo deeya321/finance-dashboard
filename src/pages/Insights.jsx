@@ -69,7 +69,7 @@ export default function Insights() {
   }, [categoryData, monthlyData])
 
   return (
-    <div className="space-y-4">
+    <div className="space-y-4 animate-fade-in-up">
       {/* Row 1 — Key insight cards */}
       <InsightCards insights={insights} />
 
