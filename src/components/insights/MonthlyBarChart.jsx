@@ -10,7 +10,7 @@ function CustomTooltip({ active, payload, label }) {
       <p className="font-medium text-gray-700 mb-1">{label}</p>
       {payload.map((p) => (
         <p key={p.name} style={{ color: p.fill }}>
-          {p.name}: ${p.value.toLocaleString()}
+          {p.name}: ₹{p.value.toLocaleString()}
         </p>
       ))}
     </div>
@@ -50,7 +50,7 @@ export default function MonthlyBarChart({ data }) {
             tick={{ fontSize: 12, fill: "#9ca3af" }}
             axisLine={false}
             tickLine={false}
-            tickFormatter={(v) => `$${(v / 1000).toFixed(0)}k`}
+            tickFormatter={(v) => `₹${(v / 1000).toFixed(0)}k`}
           />
           <Tooltip content={<CustomTooltip />} cursor={{ fill: "#f9fafb" }} />
           <Bar dataKey="income"   name="Income"   fill="#6366f1" radius={[4, 4, 0, 0]} />

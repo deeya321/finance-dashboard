@@ -2,13 +2,14 @@ import { NavLink }                  from "react-router-dom"
 import { useDispatch, useSelector } from "react-redux"
 import { toggleTheme }              from "../../features/theme/themeSlice"
 import {
-  RiDashboardLine, RiFileListLine, RiBarChartLine,
+  RiDashboardLine, RiFileListLine, RiBarChartLine, RiWalletLine,
   RiSunLine, RiMoonLine, RiCloseLine,
 } from "react-icons/ri"
 
 const navItems = [
   { to: "/dashboard",    label: "Dashboard",    icon: <RiDashboardLine size={18} /> },
   { to: "/transactions", label: "Transactions", icon: <RiFileListLine  size={18} /> },
+  { to: "/budgets",      label: "Budgets",      icon: <RiWalletLine    size={18} /> },
   { to: "/insights",     label: "Insights",     icon: <RiBarChartLine  size={18} /> },
 ]
 

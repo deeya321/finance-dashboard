@@ -4,6 +4,7 @@ import Sidebar      from "./components/layout/Sidebar"
 import Header       from "./components/layout/Header"
 import Dashboard    from "./pages/Dashboard"
 import Transactions from "./pages/Transactions"
+import Budgets      from "./pages/Budgets"
 import Insights     from "./pages/Insights"
 import NotFound     from "./pages/NotFound"
 
@@ -27,6 +28,7 @@ export default function App() {
             <Route path="/"             element={<Navigate to="/dashboard" replace />} />
             <Route path="/dashboard"    element={<Dashboard />} />
             <Route path="/transactions" element={<Transactions />} />
+            <Route path="/budgets"      element={<Budgets />} />
             <Route path="/insights"     element={<Insights />} />
             <Route path="*"             element={<NotFound />} />
           </Routes>

@@ -121,7 +121,7 @@ export default function Dashboard() {
               <CartesianGrid strokeDasharray="3 3" stroke="#f0f0f0" />
               <XAxis dataKey="month" tick={{ fontSize: 12, fill: "#9ca3af" }} axisLine={false} tickLine={false} />
               <YAxis tick={{ fontSize: 12, fill: "#9ca3af" }} axisLine={false} tickLine={false}
-                tickFormatter={(v) => `$${(v / 1000).toFixed(1)}k`} />
+                tickFormatter={(v) => `₹${(v / 1000).toFixed(1)}k`} />
               <Tooltip content={<LineTooltip />} />
               <Line type="monotone" dataKey="balance" stroke="#6366f1" strokeWidth={2.5}
                 dot={{ fill: "#6366f1", r: 4 }} activeDot={{ r: 6 }} />

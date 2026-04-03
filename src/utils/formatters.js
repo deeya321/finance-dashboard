@@ -1,8 +1,8 @@
-// Currency formatter — e.g. $1,200
+// Currency formatter — e.g. ₹1,200
 export const fmt = (n) =>
-  new Intl.NumberFormat("en-US", {
+  new Intl.NumberFormat("en-IN", {
     style: "currency",
-    currency: "USD",
+    currency: "INR",
     maximumFractionDigits: 0,
   }).format(n)
 

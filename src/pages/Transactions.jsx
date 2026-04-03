@@ -1,10 +1,12 @@
 import { useMemo, useState } from "react"
 import { useSelector }       from "react-redux"
+import { RiDownloadLine }    from "react-icons/ri"
 
 import TransactionTopBar  from "../components/transactions/TransactionTopBar"
 import TransactionFilters from "../components/transactions/TransactionFilters"
 import TransactionTable   from "../components/transactions/TransactionTable"
 import AddTransactionModal from "../components/ui/AddTransactionModal"
+import { exportToCSV }     from "../utils/export"
 
 export default function Transactions() {
   const transactions = useSelector((s) => s.transactions)
@@ -46,13 +48,27 @@ export default function Transactions() {
     expense: filtered.filter(t => t.type === "expense").reduce((s, t) => s + Math.abs(t.amount), 0),
   }), [filtered])
 
+  const handleExport = () => {
+    exportToCSV(filtered, `transactions_${new Date().toISOString().split("T")[0]}`)
+  }
+
   return (
     <div className="space-y-4">
-      <TransactionTopBar
-        count={filtered.length}
-        role={role}
-        onAdd={() => setShowModal(true)}
-      />
+      <div className="flex items-center justify-between">
+        <TransactionTopBar
+          count={filtered.length}
+          role={role}
+          onAdd={() => setShowModal(true)}
+        />
+        <button
+          onClick={handleExport}
+          className="flex items-center gap-2 px-4 py-2 text-sm font-medium text-gray-700
+                     bg-white border border-gray-200 rounded-lg hover:bg-gray-50 transition-colors"
+        >
+          <RiDownloadLine size={18} />
+          Export CSV
+        </button>
+      </div>
       <TransactionFilters totals={totals} />
       <TransactionTable
         transactions={filtered}

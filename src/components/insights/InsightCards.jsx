@@ -12,20 +12,20 @@ export default function InsightCards({ insights }) {
       color:   "red",
       label:   "Highest Spending Category",
       value:   insights.topCategory,
-      sub:     `$${insights.topCategoryAmount.toLocaleString()} spent`,
+      sub:     `₹${insights.topCategoryAmount.toLocaleString()} spent`,
     },
     {
       icon:    <RiTrophyLine size={20} />,
       color:   "green",
       label:   "Best Savings Month",
       value:   insights.bestMonth,
-      sub:     `$${insights.bestMonthSavings.toLocaleString()} saved`,
+      sub:     `₹${insights.bestMonthSavings.toLocaleString()} saved`,
     },
     {
       icon:    <RiArrowUpDownLine size={20} />,
       color:   "indigo",
       label:   "Avg Monthly Expense",
-      value:   `$${insights.avgMonthlyExpense.toLocaleString()}`,
+      value:   `₹${insights.avgMonthlyExpense.toLocaleString()}`,
       sub:     "Across all months",
     },
     {
