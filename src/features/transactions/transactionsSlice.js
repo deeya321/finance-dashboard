@@ -1,17 +1,35 @@
 import { createSlice } from "@reduxjs/toolkit"
 import { initialTransactions } from "../../data/transactions"
 
+// Load from localStorage if available, else use mock data
+const load = () => {
+  try {
+    const saved = localStorage.getItem("fintrack_transactions")
+    return saved ? JSON.parse(saved) : initialTransactions
+  } catch {
+    return initialTransactions
+  }
+}
+
+// Save to localStorage
+const save = (state) => {
+  try {
+    localStorage.setItem("fintrack_transactions", JSON.stringify(state))
+  } catch {}
+}
+
 const transactionsSlice = createSlice({
   name: "transactions",
-  initialState: initialTransactions,
+  initialState: load(),
   reducers: {
-    // Admin: add a new transaction
     addTransaction: (state, action) => {
       state.push(action.payload)
+      save(state)
     },
-    // Admin: delete a transaction by id
     deleteTransaction: (state, action) => {
-      return state.filter((t) => t.id !== action.payload)
+      const next = state.filter((t) => t.id !== action.payload)
+      save(next)
+      return next
     },
   },
 })
