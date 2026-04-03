@@ -9,15 +9,15 @@ export default function TransactionRow({ txn, role }) {
   const dispatch = useDispatch()
 
   return (
-    <tr className="hover:bg-gray-50 transition-colors duration-200 ease-in-out">
+    <tr className="hover:bg-gray-200 dark:hover:bg-gray-800 transition-colors duration-200 ease-in-out">
 
       {/* Date */}
-      <td className="px-5 py-3.5 text-gray-500 whitespace-nowrap">
+      <td className="px-5 py-3.5 text-gray-500 dark:text-gray-400 whitespace-nowrap">
         {formatDate(txn.date)}
       </td>
 
       {/* Description */}
-      <td className="px-5 py-3.5 font-medium text-gray-700">
+      <td className="px-5 py-3.5 font-medium text-gray-700 dark:text-gray-200">
         {txn.description}
       </td>
 
@@ -28,7 +28,7 @@ export default function TransactionRow({ txn, role }) {
             className="w-2 h-2 rounded-full shrink-0"
             style={{ backgroundColor: categoryColors[txn.category] }}
           />
-          <span className="text-gray-600">{txn.category}</span>
+          <span className="text-gray-600 dark:text-gray-300">{txn.category}</span>
         </div>
       </td>
 
@@ -39,7 +39,7 @@ export default function TransactionRow({ txn, role }) {
 
       {/* Amount */}
       <td className={`px-5 py-3.5 text-right font-semibold whitespace-nowrap
-        ${txn.type === "income" ? "text-green-600" : "text-red-500"}`}>
+        ${txn.type === "income" ? "text-green-600 dark:text-green-400" : "text-red-500 dark:text-red-400"}`}>
         {txn.type === "income" ? "+" : ""}
         {fmt(txn.amount)}
       </td>
@@ -47,12 +47,12 @@ export default function TransactionRow({ txn, role }) {
       {/* Admin: delete */}
       {role === "admin" && (
         <td className="px-5 py-3.5 text-right">
-            <button
-              onClick={() => dispatch(deleteTransaction(txn.id))}
-              className="btn-active p-1.5 rounded-lg text-gray-400 hover:text-red-500
-                         hover:bg-red-50 transition-colors"
-              title="Delete transaction"
-            >
+          <button
+            onClick={() => dispatch(deleteTransaction(txn.id))}
+            className="btn-active p-1.5 rounded-lg text-gray-400 dark:text-gray-500 hover:text-red-500 dark:hover:text-red-400
+                       hover:bg-red-50 dark:hover:bg-red-950 transition-colors"
+            title="Delete transaction"
+          >
             <RiDeleteBinLine size={15} />
           </button>
         </td>

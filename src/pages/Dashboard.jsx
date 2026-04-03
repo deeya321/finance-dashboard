@@ -22,9 +22,9 @@ const MONTHS = [
 function LineTooltip({ active, payload, label }) {
   if (!active || !payload?.length) return null
   return (
-    <div className="bg-white border border-gray-200 rounded-lg px-3 py-2 shadow-sm text-sm">
-      <p className="font-medium text-gray-700 mb-1">{label}</p>
-      <p className="text-indigo-600">Balance: {fmt(payload[0].value)}</p>
+    <div className="bg-white dark:bg-gray-800 border border-gray-200 dark:border-gray-700 rounded-lg px-3 py-2 shadow-sm text-sm">
+      <p className="font-medium text-gray-700 dark:text-gray-200 mb-1">{label}</p>
+      <p className="text-indigo-600 dark:text-indigo-400">Balance: {fmt(payload[0].value)}</p>
     </div>
   )
 }
@@ -33,8 +33,8 @@ function LineTooltip({ active, payload, label }) {
 function PieTooltip({ active, payload }) {
   if (!active || !payload?.length) return null
   return (
-    <div className="bg-white border border-gray-200 rounded-lg px-3 py-2 shadow-sm text-sm">
-      <p className="font-medium text-gray-700">{payload[0].name}</p>
+    <div className="bg-white dark:bg-gray-800 border border-gray-200 dark:border-gray-700 rounded-lg px-3 py-2 shadow-sm text-sm">
+      <p className="font-medium text-gray-700 dark:text-gray-200">{payload[0].name}</p>
       <p style={{ color: payload[0].payload.fill }}>{fmt(payload[0].value)}</p>
     </div>
   )
@@ -122,12 +122,12 @@ export default function Dashboard() {
 
         {/* Line Chart */}
         <div className="lg:col-span-2 animate-fade-in-up-delay-1">
-          <div className="bg-white rounded-xl border border-gray-200 p-5">
-            <h2 className="text-base font-semibold text-gray-800 mb-1">Monthly Balance Trend</h2>
-            <p className="text-xs text-gray-400 mb-4">Net cash flow per month</p>
+          <div className="card-hover bg-white dark:bg-gray-900 rounded-xl border border-gray-200 dark:border-gray-800 p-5">
+            <h2 className="text-base font-semibold text-gray-800 dark:text-gray-100 mb-1">Monthly Balance Trend</h2>
+            <p className="text-xs text-gray-400 dark:text-gray-500 mb-4">Net cash flow per month</p>
             <ResponsiveContainer width="100%" height={240}>
               <LineChart data={trendData} margin={{ top: 5, right: 20, left: 0, bottom: 5 }}>
-                <CartesianGrid strokeDasharray="3 3" stroke="#f0f0f0" />
+                <CartesianGrid strokeDasharray="3 3" stroke="#374151" vertical={false} />
                 <XAxis dataKey="month" tick={{ fontSize: 12, fill: "#9ca3af" }} axisLine={false} tickLine={false} />
                 <YAxis tick={{ fontSize: 12, fill: "#9ca3af" }} axisLine={false} tickLine={false}
                   tickFormatter={(v) => `₹${(v / 1000).toFixed(1)}k`} />
@@ -141,9 +141,9 @@ export default function Dashboard() {
 
         {/* Pie Chart */}
         <div className="animate-fade-in-up-delay-2">
-          <div className="bg-white rounded-xl border border-gray-200 p-5">
-            <h2 className="text-base font-semibold text-gray-800 mb-1">Spending Breakdown</h2>
-            <p className="text-xs text-gray-400 mb-4">By category</p>
+          <div className="card-hover bg-white dark:bg-gray-900 rounded-xl border border-gray-200 dark:border-gray-800 p-5">
+            <h2 className="text-base font-semibold text-gray-800 dark:text-gray-100 mb-1">Spending Breakdown</h2>
+            <p className="text-xs text-gray-400 dark:text-gray-500 mb-4">By category</p>
             <ResponsiveContainer width="100%" height={160}>
               <PieChart>
                 <Pie data={categoryData} cx="50%" cy="50%"
@@ -158,9 +158,9 @@ export default function Dashboard() {
                 <div key={item.name} className="flex items-center justify-between text-xs">
                   <div className="flex items-center gap-2">
                     <span className="w-2.5 h-2.5 rounded-sm shrink-0" style={{ backgroundColor: item.fill }} />
-                    <span className="text-gray-600">{item.name}</span>
+                    <span className="text-gray-600 dark:text-gray-300">{item.name}</span>
                   </div>
-                  <span className="text-gray-800 font-medium">{fmt(item.value)}</span>
+                  <span className="text-gray-800 dark:text-gray-200 font-medium">{fmt(item.value)}</span>
                 </div>
               ))}
             </div>
@@ -170,24 +170,24 @@ export default function Dashboard() {
 
       {/* Recent Transactions */}
       <div className="animate-fade-in-up-delay-3">
-        <div className="bg-white rounded-xl border border-gray-200 p-5">
-          <h2 className="text-base font-semibold text-gray-800 mb-4">Recent Transactions</h2>
+        <div className="card-hover bg-white dark:bg-gray-900 rounded-xl border border-gray-200 dark:border-gray-800 p-5">
+          <h2 className="text-base font-semibold text-gray-800 dark:text-gray-100 mb-4">Recent Transactions</h2>
         {recentTxns.length === 0 ? (
-          <p className="text-sm text-gray-400 text-center py-6">No transactions yet.</p>
+          <p className="text-sm text-gray-400 dark:text-gray-500 text-center py-6">No transactions yet.</p>
         ) : (
           <div className="space-y-3">
             {recentTxns.map((txn) => (
               <div key={txn.id}
-                className="flex items-center justify-between py-2 border-b border-gray-50 last:border-0">
+                className="flex items-center justify-between py-2 border-b border-gray-50 dark:border-gray-800 last:border-0 hover:bg-gray-50 dark:hover:bg-gray-800 transition-colors">
                 <div className="flex items-center gap-3">
                   <span className="w-2.5 h-2.5 rounded-full shrink-0"
                     style={{ backgroundColor: categoryColors[txn.category] }} />
                   <div>
-                    <p className="text-sm font-medium text-gray-700">{txn.description}</p>
-                    <p className="text-xs text-gray-400">{formatDate(txn.date)} · {txn.category}</p>
+                    <p className="text-sm font-medium text-gray-700 dark:text-gray-200">{txn.description}</p>
+                    <p className="text-xs text-gray-400 dark:text-gray-500">{formatDate(txn.date)} · {txn.category}</p>
                   </div>
                 </div>
-                <span className={`text-sm font-semibold ${txn.type === "income" ? "text-green-600" : "text-red-500"}`}>
+                <span className={`text-sm font-semibold ${txn.type === "income" ? "text-green-600 dark:text-green-400" : "text-red-500 dark:text-red-400"}`}>
                   {txn.type === "income" ? "+" : ""}{fmt(txn.amount)}
                 </span>
               </div>

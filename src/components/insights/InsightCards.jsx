@@ -38,10 +38,10 @@ export default function InsightCards({ insights }) {
   ]
 
   const colorMap = {
-    red:    "bg-red-50 text-red-500",
-    green:  "bg-green-50 text-green-600",
-    indigo: "bg-indigo-50 text-indigo-600",
-    teal:   "bg-teal-50 text-teal-600",
+    red:    "bg-red-50 text-red-500 dark:bg-red-950 dark:text-red-400",
+    green:  "bg-green-50 text-green-600 dark:bg-green-950 dark:text-green-400",
+    indigo: "bg-indigo-50 text-indigo-600 dark:bg-indigo-950 dark:text-indigo-400",
+    teal:   "bg-teal-50 text-teal-600 dark:bg-teal-950 dark:text-teal-400",
   }
 
   return (
@@ -49,15 +49,15 @@ export default function InsightCards({ insights }) {
       {cards.map((card) => (
         <div
           key={card.label}
-          className="card-hover bg-white rounded-xl border border-gray-200 p-5 flex items-start gap-4"
+          className="card-hover bg-white dark:bg-gray-900 rounded-xl border border-gray-200 dark:border-gray-800 p-5 flex items-start gap-4"
         >
           <div className={`w-11 h-11 rounded-lg flex items-center justify-center shrink-0 ${colorMap[card.color]}`}>
             {card.icon}
           </div>
           <div>
-            <p className="text-xs text-gray-400 mb-1">{card.label}</p>
-            <p className="text-lg font-semibold text-gray-800">{card.value}</p>
-            <p className="text-xs text-gray-400 mt-0.5">{card.sub}</p>
+            <p className="text-xs text-gray-400 dark:text-gray-500 mb-1">{card.label}</p>
+            <p className="text-lg font-semibold text-gray-800 dark:text-gray-100">{card.value}</p>
+            <p className="text-xs text-gray-400 dark:text-gray-500 mt-0.5">{card.sub}</p>
           </div>
         </div>
       ))}

@@ -23,16 +23,16 @@ export default function TransactionTable({ transactions, sortBy, role }) {
   // ── Empty state ────────────────────────────────────────────────────────────
   if (transactions.length === 0) {
     return (
-      <div className="bg-white rounded-xl border border-gray-200">
+      <div className="bg-white dark:bg-gray-900 rounded-xl border border-gray-200 dark:border-gray-800">
         <div className="flex flex-col items-center justify-center py-16 text-center">
-          <div className="w-12 h-12 rounded-full bg-gray-100 flex items-center justify-center mb-3">
-            <RiFilterLine size={20} className="text-gray-400" />
+          <div className="w-12 h-12 rounded-full bg-gray-100 dark:bg-gray-800 flex items-center justify-center mb-3">
+            <RiFilterLine size={20} className="text-gray-400 dark:text-gray-500" />
           </div>
-          <p className="text-sm font-medium text-gray-600">No transactions found</p>
-          <p className="text-xs text-gray-400 mt-1">Try adjusting your filters</p>
+          <p className="text-sm font-medium text-gray-600 dark:text-gray-300">No transactions found</p>
+          <p className="text-xs text-gray-400 dark:text-gray-500 mt-1">Try adjusting your filters</p>
           <button
             onClick={() => dispatch(resetFilters())}
-            className="mt-4 text-xs text-indigo-600 hover:underline"
+            className="mt-4 text-xs text-indigo-600 dark:text-indigo-400 hover:underline"
           >
             Clear all filters
           </button>
@@ -43,40 +43,40 @@ export default function TransactionTable({ transactions, sortBy, role }) {
 
   // ── Table ──────────────────────────────────────────────────────────────────
   return (
-    <div className="bg-white rounded-xl border border-gray-200 overflow-hidden">
+    <div className="bg-white dark:bg-gray-900 rounded-xl border border-gray-200 dark:border-gray-800 overflow-hidden">
       <div className="overflow-x-auto">
         <table className="w-full text-sm">
 
           {/* Head */}
           <thead>
-            <tr className="border-b border-gray-100 bg-gray-50">
-              <th className="text-left px-5 py-3 text-xs font-medium text-gray-500">
+            <tr className="border-b border-gray-100 dark:border-gray-800 bg-gray-50 dark:bg-gray-800">
+              <th className="text-left px-5 py-3 text-xs font-medium text-gray-500 dark:text-gray-400">
                 <button
                   onClick={() => toggleSort("date")}
-                  className="flex items-center gap-1 hover:text-gray-700"
+                  className="flex items-center gap-1 hover:text-gray-700 dark:hover:text-gray-200"
                 >
                   Date <SortIcon field="date" sortBy={sortBy} />
                 </button>
               </th>
-              <th className="text-left px-5 py-3 text-xs font-medium text-gray-500">
+              <th className="text-left px-5 py-3 text-xs font-medium text-gray-500 dark:text-gray-400">
                 Description
               </th>
-              <th className="text-left px-5 py-3 text-xs font-medium text-gray-500">
+              <th className="text-left px-5 py-3 text-xs font-medium text-gray-500 dark:text-gray-400">
                 Category
               </th>
-              <th className="text-left px-5 py-3 text-xs font-medium text-gray-500">
+              <th className="text-left px-5 py-3 text-xs font-medium text-gray-500 dark:text-gray-400">
                 Type
               </th>
-              <th className="text-right px-5 py-3 text-xs font-medium text-gray-500">
+              <th className="text-right px-5 py-3 text-xs font-medium text-gray-500 dark:text-gray-400">
                 <button
                   onClick={() => toggleSort("amount")}
-                  className="flex items-center gap-1 ml-auto hover:text-gray-700"
+                  className="flex items-center gap-1 ml-auto hover:text-gray-700 dark:hover:text-gray-200"
                 >
                   Amount <SortIcon field="amount" sortBy={sortBy} />
                 </button>
               </th>
               {role === "admin" && (
-                <th className="text-right px-5 py-3 text-xs font-medium text-gray-500">
+                <th className="text-right px-5 py-3 text-xs font-medium text-gray-500 dark:text-gray-400">
                   Action
                 </th>
               )}
@@ -84,7 +84,7 @@ export default function TransactionTable({ transactions, sortBy, role }) {
           </thead>
 
           {/* Body */}
-          <tbody className="divide-y divide-gray-50">
+          <tbody className="divide-y divide-gray-50 dark:divide-gray-800">
             {transactions.map((txn) => (
               <TransactionRow key={txn.id} txn={txn} role={role} />
             ))}
