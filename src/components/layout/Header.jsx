@@ -28,7 +28,7 @@ export default function Header({ onMenuClick }) {
         {/* Hamburger — mobile only */}
         <button
           onClick={onMenuClick}
-          className="lg:hidden w-8 h-8 flex items-center justify-center rounded-lg
+          className="lg:hidden w-10 h-10 sm:w-8 sm:h-8 flex items-center justify-center rounded-lg
                      text-gray-500 hover:bg-gray-100 dark:hover:bg-gray-800 transition-colors"
         >
           <RiMenuLine size={20} />
@@ -44,43 +44,43 @@ export default function Header({ onMenuClick }) {
         </div>
       </div>
 
-      {/* Right */}
-      <div className="flex items-center gap-2">
+        {/* Right */}
+        <div className="flex items-center gap-2 sm:gap-3">
 
         {/* Role toggle */}
         <div className="flex items-center gap-1 bg-gray-50 dark:bg-gray-800
                         border border-gray-200 dark:border-gray-700 rounded-lg p-1">
-          <button
-            onClick={() => dispatch(setRole("viewer"))}
-            className={`flex items-center gap-1.5 text-xs font-medium px-3 py-1.5
-                        rounded-md transition-all
-              ${role === "viewer"
-                ? "bg-white dark:bg-gray-700 text-gray-700 dark:text-gray-200 shadow-sm border border-gray-200 dark:border-gray-600"
-                : "text-gray-400 hover:text-gray-600 dark:hover:text-gray-300"
-              }`}
-          >
-            <RiEyeLine size={13} />
-            <span className="hidden sm:inline">Viewer</span>
-          </button>
-          <button
-            onClick={() => dispatch(setRole("admin"))}
-            className={`flex items-center gap-1.5 text-xs font-medium px-3 py-1.5
-                        rounded-md transition-all
-              ${role === "admin"
-                ? "bg-indigo-600 text-white shadow-sm"
-                : "text-gray-400 hover:text-gray-600 dark:hover:text-gray-300"
-              }`}
-          >
-            <RiShieldUserLine size={13} />
-            <span className="hidden sm:inline">Admin</span>
-          </button>
+            <button
+              onClick={() => dispatch(setRole("viewer"))}
+              className={`flex items-center gap-1.5 text-xs font-medium px-3 sm:px-3 py-2 sm:py-1.5
+                          rounded-md transition-all
+                ${role === "viewer"
+                  ? "bg-white dark:bg-gray-700 text-gray-700 dark:text-gray-200 shadow-sm border border-gray-200 dark:border-gray-600"
+                  : "text-gray-400 hover:text-gray-600 dark:hover:text-gray-300"
+                }`}
+            >
+              <RiEyeLine size={13} />
+              <span className="hidden sm:inline">Viewer</span>
+            </button>
+            <button
+              onClick={() => dispatch(setRole("admin"))}
+              className={`flex items-center gap-1.5 text-xs font-medium px-3 sm:px-3 py-2 sm:py-1.5
+                          rounded-md transition-all
+                ${role === "admin"
+                  ? "bg-indigo-600 text-white shadow-sm"
+                  : "text-gray-400 hover:text-gray-600 dark:hover:text-gray-300"
+                }`}
+            >
+              <RiShieldUserLine size={13} />
+              <span className="hidden sm:inline">Admin</span>
+            </button>
         </div>
 
         {/* Divider */}
         <div className="w-px h-6 bg-gray-200 dark:bg-gray-700 mx-1" />
 
         {/* Bell */}
-        <button className="w-8 h-8 flex items-center justify-center rounded-lg
+        <button className="w-10 h-10 sm:w-8 sm:h-8 flex items-center justify-center rounded-lg
                            text-gray-400 hover:bg-gray-100 dark:hover:bg-gray-800
                            hover:text-gray-600 transition-colors relative">
           <RiBellLine size={17} />
@@ -90,7 +90,7 @@ export default function Header({ onMenuClick }) {
 
         {/* Avatar */}
         <div className="flex items-center gap-2 pl-1">
-          <div className="w-8 h-8 rounded-lg bg-indigo-100 dark:bg-indigo-950
+          <div className="w-10 h-10 sm:w-8 sm:h-8 rounded-lg bg-indigo-100 dark:bg-indigo-950
                           flex items-center justify-center">
             <RiUserSmileLine size={16} className="text-indigo-600 dark:text-indigo-400" />
           </div>

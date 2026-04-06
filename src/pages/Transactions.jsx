@@ -54,7 +54,7 @@ export default function Transactions() {
 
   return (
     <div className="space-y-4 animate-fade-in-up">
-      <div className="flex items-center justify-between">
+      <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-3">
         <TransactionTopBar
           count={filtered.length}
           role={role}
@@ -62,7 +62,7 @@ export default function Transactions() {
         />
         <button
           onClick={handleExport}
-          className="btn-active flex items-center gap-2 px-4 py-2 text-sm font-medium text-gray-700 dark:text-gray-300
+          className="btn-active flex items-center gap-2 px-4 py-2.5 sm:py-2 text-sm font-medium text-gray-700 dark:text-gray-300
                      bg-white dark:bg-gray-800 border border-gray-200 dark:border-gray-700 rounded-lg hover:bg-gray-50 dark:hover:bg-gray-700 transition-colors"
         >
           <RiDownloadLine size={18} />

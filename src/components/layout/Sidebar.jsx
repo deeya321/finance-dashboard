@@ -50,10 +50,10 @@ export default function Sidebar({ open, onClose }) {
       `}>
 
         {/* Logo + close */}
-        <div className="px-6 py-5 border-b border-gray-200 dark:border-gray-800
+        <div className="px-4 sm:px-6 py-4 sm:py-5 border-b border-gray-200 dark:border-gray-800
                         flex items-center justify-between">
           <div className="flex items-center gap-2">
-            <div className="w-8 h-8 bg-indigo-600 rounded-lg flex items-center justify-center">
+            <div className="w-8 h-8 sm:w-8 sm:h-8 bg-indigo-600 rounded-lg flex items-center justify-center">
               <span className="text-white font-bold text-sm">F</span>
             </div>
             <span className="font-semibold text-gray-800 dark:text-white text-lg">
@@ -62,22 +62,22 @@ export default function Sidebar({ open, onClose }) {
           </div>
           <button
             onClick={onClose}
-            className="lg:hidden w-8 h-8 flex items-center justify-center rounded-lg
+            className="lg:hidden w-10 h-10 sm:w-8 sm:h-8 flex items-center justify-center rounded-lg
                        text-gray-400 hover:bg-gray-100 dark:hover:bg-gray-800 transition-colors"
           >
             <RiCloseLine size={18} />
           </button>
-        </div>
+         </div>
 
-        {/* Nav */}
-        <nav className="flex-1 px-3 py-4 space-y-1">
+         {/* Nav */}
+        <nav className="flex-1 px-3 py-4 sm:px-4 sm:py-5 space-y-1">
           {navItems.map((item) => (
             <NavLink
               key={item.to}
               to={item.to}
               onClick={onClose}
               className={({ isActive }) => `
-                flex items-center gap-3 px-3 py-2.5 rounded-lg
+                flex items-center gap-3 px-3 py-2.5 sm:py-3 rounded-lg
                 text-sm font-medium transition-colors
                 ${isActive
                   ? "bg-indigo-50 text-indigo-700 dark:bg-indigo-950 dark:text-indigo-400"
@@ -95,7 +95,7 @@ export default function Sidebar({ open, onClose }) {
         <div className="px-4 py-4 border-t border-gray-200 dark:border-gray-800">
           <button
             onClick={handleToggle}
-            className="w-full flex items-center gap-3 px-3 py-2.5 rounded-lg text-sm
+            className="w-full flex items-center gap-3 px-3 py-2.5 sm:py-3 rounded-lg text-sm
                        font-medium text-gray-600 dark:text-gray-400
                        hover:bg-gray-100 dark:hover:bg-gray-800 transition-colors"
           >
@@ -104,9 +104,9 @@ export default function Sidebar({ open, onClose }) {
               : <><RiMoonLine size={18} /> Dark Mode</>
             }
           </button>
-          <p className="text-xs text-gray-400 dark:text-gray-600 mt-3 px-3">
-            FinTrack v1.0
-          </p>
+           <p className="text-xs text-gray-400 dark:text-gray-600 mt-3 sm:mt-4 px-3">
+             FinTrack v1.0
+           </p>
         </div>
       </aside>
     </>

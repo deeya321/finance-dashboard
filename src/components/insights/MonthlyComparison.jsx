@@ -32,34 +32,34 @@ export default function MonthlyComparison({ data }) {
         Expense delta vs previous month — green means you spent less
       </p>
 
-      <div className="overflow-x-auto">
-        <table className="w-full text-sm">
+      <div className="overflow-x-auto -mx-5 sm:mx-0">
+        <table className="w-full text-sm min-w-[400px]">
           <thead>
             <tr className="border-b border-gray-100 dark:border-gray-800">
-              <th className="text-left pb-3 text-xs font-medium text-gray-500 dark:text-gray-400">Month</th>
-              <th className="text-right pb-3 text-xs font-medium text-gray-500 dark:text-gray-400">Income</th>
-              <th className="text-right pb-3 text-xs font-medium text-gray-500 dark:text-gray-400">Expenses</th>
-              <th className="text-right pb-3 text-xs font-medium text-gray-500 dark:text-gray-400">vs Last Month</th>
-              <th className="text-right pb-3 text-xs font-medium text-gray-500 dark:text-gray-400">Savings</th>
+              <th className="text-left pb-3 px-5 text-xs font-medium text-gray-500 dark:text-gray-400">Month</th>
+              <th className="text-right pb-3 px-5 text-xs font-medium text-gray-500 dark:text-gray-400">Income</th>
+              <th className="text-right pb-3 px-5 text-xs font-medium text-gray-500 dark:text-gray-400">Expenses</th>
+              <th className="text-right pb-3 px-5 text-xs font-medium text-gray-500 dark:text-gray-400">vs Last Month</th>
+              <th className="text-right pb-3 px-5 text-xs font-medium text-gray-500 dark:text-gray-400">Savings</th>
             </tr>
           </thead>
           <tbody className="divide-y divide-gray-50 dark:divide-gray-800">
             {data.map((row, i) => (
               <tr key={row.month} className="hover:bg-gray-50 dark:hover:bg-gray-800 transition-colors duration-200 ease-in-out">
-                <td className="py-3 font-medium text-gray-700 dark:text-gray-200">{row.month}</td>
-                <td className="py-3 text-right text-green-600 dark:text-green-400 font-medium">
+                <td className="py-3 px-5 font-medium text-gray-700 dark:text-gray-200">{row.month}</td>
+                <td className="py-3 px-5 text-right text-green-600 dark:text-green-400 font-medium">
                   {fmt(row.income)}
                 </td>
-                <td className="py-3 text-right text-red-500 dark:text-red-400 font-medium">
+                <td className="py-3 px-5 text-right text-red-500 dark:text-red-400 font-medium">
                   {fmt(row.expenses)}
                 </td>
-                <td className="py-3 text-right">
+                <td className="py-3 px-5 text-right">
                   <DeltaBadge
                     current={row.expenses}
                     previous={data[i - 1]?.expenses}
                   />
                 </td>
-                <td className={`py-3 text-right font-semibold ${
+                <td className={`py-3 px-5 text-right font-semibold ${
                   row.income - row.expenses >= 0
                     ? "text-indigo-600 dark:text-indigo-400"
                     : "text-red-500 dark:text-red-400"

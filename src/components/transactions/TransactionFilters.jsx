@@ -12,10 +12,10 @@ export default function TransactionFilters({ totals }) {
 
   return (
     <div className="card-hover bg-white dark:bg-gray-900 rounded-xl border border-gray-200 dark:border-gray-800 p-4">
-      <div className="flex flex-wrap gap-3">
+      <div className="flex flex-col sm:flex-wrap gap-3">
 
-        {/* Search */}
-        <div className="relative flex-1 min-w-[180px]">
+         {/* Search */}
+         <div className="relative w-full sm:flex-1 min-w-[180px]">
           <RiSearchLine
             size={15}
             className="absolute left-3 top-1/2 -translate-y-1/2 text-gray-400 dark:text-gray-500"
@@ -34,7 +34,7 @@ export default function TransactionFilters({ totals }) {
         <select
           value={filters.type}
           onChange={(e) => dispatch(setType(e.target.value))}
-          className="text-sm border border-gray-200 dark:border-gray-700 rounded-lg px-3 py-2 text-gray-600 dark:text-gray-300
+          className="text-sm border border-gray-200 dark:border-gray-700 rounded-lg px-3 py-2.5 sm:py-2 text-gray-600 dark:text-gray-300
                      focus:outline-none focus:ring-2 focus:ring-indigo-500 bg-white dark:bg-gray-800"
         >
           <option value="all">All Types</option>
@@ -46,7 +46,7 @@ export default function TransactionFilters({ totals }) {
         <select
           value={filters.category}
           onChange={(e) => dispatch(setCategory(e.target.value))}
-          className="text-sm border border-gray-200 dark:border-gray-700 rounded-lg px-3 py-2 text-gray-600 dark:text-gray-300
+          className="text-sm border border-gray-200 dark:border-gray-700 rounded-lg px-3 py-2.5 sm:py-2 text-gray-600 dark:text-gray-300
                      focus:outline-none focus:ring-2 focus:ring-indigo-500 bg-white dark:bg-gray-800"
         >
           <option value="all">All Categories</option>
@@ -56,18 +56,18 @@ export default function TransactionFilters({ totals }) {
         </select>
 
         {/* Reset */}
-        <button
-          onClick={() => dispatch(resetFilters())}
-          className="btn-active flex items-center gap-1.5 text-sm text-gray-500 dark:text-gray-400 border border-gray-200 dark:border-gray-700
-                     rounded-lg px-3 py-2 hover:bg-gray-50 dark:hover:bg-gray-800 transition-colors"
-        >
+          <button
+            onClick={() => dispatch(resetFilters())}
+            className="btn-active flex items-center gap-1.5 text-sm text-gray-500 dark:text-gray-400 border border-gray-200 dark:border-gray-700
+                       rounded-lg px-3 py-2.5 sm:py-2 hover:bg-gray-50 dark:hover:bg-gray-800 transition-colors"
+          >
           <RiFilterLine size={14} />
           Reset
         </button>
       </div>
 
       {/* Totals strip */}
-      <div className="flex gap-4 mt-3 pt-3 border-t border-gray-100 dark:border-gray-800">
+      <div className="flex flex-col sm:flex-row gap-2 sm:gap-4 mt-3 pt-3 border-t border-gray-100 dark:border-gray-800">
         <p className="text-xs text-gray-500 dark:text-gray-400">
           Income:{" "}
           <span className="font-semibold text-green-600 dark:text-green-400">{fmt(totals.income)}</span>

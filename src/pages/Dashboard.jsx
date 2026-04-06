@@ -125,7 +125,7 @@ export default function Dashboard() {
           <div className="card-hover bg-white dark:bg-gray-900 rounded-xl border border-gray-200 dark:border-gray-800 p-5">
             <h2 className="text-base font-semibold text-gray-800 dark:text-gray-100 mb-1">Monthly Balance Trend</h2>
             <p className="text-xs text-gray-400 dark:text-gray-500 mb-4">Net cash flow per month</p>
-            <ResponsiveContainer width="100%" height={240}>
+            <ResponsiveContainer width="100%" height={200} sm:height={220} lg:height={240}>
               <LineChart data={trendData} margin={{ top: 5, right: 20, left: 0, bottom: 5 }}>
                 <CartesianGrid strokeDasharray="3 3" stroke="#374151" vertical={false} />
                 <XAxis dataKey="month" tick={{ fontSize: 12, fill: "#9ca3af" }} axisLine={false} tickLine={false} />
@@ -144,7 +144,7 @@ export default function Dashboard() {
           <div className="card-hover bg-white dark:bg-gray-900 rounded-xl border border-gray-200 dark:border-gray-800 p-5">
             <h2 className="text-base font-semibold text-gray-800 dark:text-gray-100 mb-1">Spending Breakdown</h2>
             <p className="text-xs text-gray-400 dark:text-gray-500 mb-4">By category</p>
-            <ResponsiveContainer width="100%" height={160}>
+            <ResponsiveContainer width="100%" height={140} sm:height={160}>
               <PieChart>
                 <Pie data={categoryData} cx="50%" cy="50%"
                   innerRadius={45} outerRadius={75} paddingAngle={2} dataKey="value">
@@ -178,16 +178,16 @@ export default function Dashboard() {
           <div className="space-y-3">
             {recentTxns.map((txn) => (
               <div key={txn.id}
-                className="flex items-center justify-between py-2 border-b border-gray-50 dark:border-gray-800 last:border-0 hover:bg-gray-50 dark:hover:bg-gray-800 transition-colors">
-                <div className="flex items-center gap-3">
+                className="flex flex-col sm:flex-row sm:items-center justify-between py-2 border-b border-gray-50 dark:border-gray-800 last:border-0 hover:bg-gray-50 dark:hover:bg-gray-800 transition-colors gap-1 sm:gap-0">
+                <div className="flex items-center gap-3 min-w-0">
                   <span className="w-2.5 h-2.5 rounded-full shrink-0"
                     style={{ backgroundColor: categoryColors[txn.category] }} />
-                  <div>
-                    <p className="text-sm font-medium text-gray-700 dark:text-gray-200">{txn.description}</p>
+                  <div className="min-w-0">
+                    <p className="text-sm font-medium text-gray-700 dark:text-gray-200 truncate">{txn.description}</p>
                     <p className="text-xs text-gray-400 dark:text-gray-500">{formatDate(txn.date)} · {txn.category}</p>
                   </div>
                 </div>
-                <span className={`text-sm font-semibold ${txn.type === "income" ? "text-green-600 dark:text-green-400" : "text-red-500 dark:text-red-400"}`}>
+                <span className={`text-sm font-semibold ${txn.type === "income" ? "text-green-600 dark:text-green-400" : "text-red-500 dark:text-red-400"} text-right sm:text-left`}>
                   {txn.type === "income" ? "+" : ""}{fmt(txn.amount)}
                 </span>
               </div>

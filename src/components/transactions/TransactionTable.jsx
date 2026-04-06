@@ -24,8 +24,8 @@ export default function TransactionTable({ transactions, sortBy, role }) {
   if (transactions.length === 0) {
     return (
       <div className="bg-white dark:bg-gray-900 rounded-xl border border-gray-200 dark:border-gray-800">
-        <div className="flex flex-col items-center justify-center py-16 text-center">
-          <div className="w-12 h-12 rounded-full bg-gray-100 dark:bg-gray-800 flex items-center justify-center mb-3">
+       <div className="flex flex-col items-center justify-center py-12 sm:py-16 text-center px-4">
+          <div className="w-12 h-12 sm:w-12 sm:h-12 rounded-full bg-gray-100 dark:bg-gray-800 flex items-center justify-center mb-3">
             <RiFilterLine size={20} className="text-gray-400 dark:text-gray-500" />
           </div>
           <p className="text-sm font-medium text-gray-600 dark:text-gray-300">No transactions found</p>
@@ -47,41 +47,41 @@ export default function TransactionTable({ transactions, sortBy, role }) {
       <div className="overflow-x-auto">
         <table className="w-full text-sm">
 
-          {/* Head */}
-          <thead>
-            <tr className="border-b border-gray-100 dark:border-gray-800 bg-gray-50 dark:bg-gray-800">
-              <th className="text-left px-5 py-3 text-xs font-medium text-gray-500 dark:text-gray-400">
-                <button
-                  onClick={() => toggleSort("date")}
-                  className="flex items-center gap-1 hover:text-gray-700 dark:hover:text-gray-200"
-                >
-                  Date <SortIcon field="date" sortBy={sortBy} />
-                </button>
-              </th>
-              <th className="text-left px-5 py-3 text-xs font-medium text-gray-500 dark:text-gray-400">
-                Description
-              </th>
-              <th className="text-left px-5 py-3 text-xs font-medium text-gray-500 dark:text-gray-400">
-                Category
-              </th>
-              <th className="text-left px-5 py-3 text-xs font-medium text-gray-500 dark:text-gray-400">
-                Type
-              </th>
-              <th className="text-right px-5 py-3 text-xs font-medium text-gray-500 dark:text-gray-400">
-                <button
-                  onClick={() => toggleSort("amount")}
-                  className="flex items-center gap-1 ml-auto hover:text-gray-700 dark:hover:text-gray-200"
-                >
-                  Amount <SortIcon field="amount" sortBy={sortBy} />
-                </button>
-              </th>
-              {role === "admin" && (
-                <th className="text-right px-5 py-3 text-xs font-medium text-gray-500 dark:text-gray-400">
-                  Action
+           {/* Head */}
+            <thead>
+              <tr className="border-b border-gray-100 dark:border-gray-800 bg-gray-50 dark:bg-gray-800">
+                <th className="text-left px-2 sm:px-5 py-2 sm:py-3 text-xs font-medium text-gray-500 dark:text-gray-400 hidden sm:table-cell">
+                  <button
+                    onClick={() => toggleSort("date")}
+                    className="flex items-center gap-1 px-2 py-1 -mx-2 -my-1 hover:text-gray-700 dark:hover:text-gray-200 rounded"
+                  >
+                    Date <SortIcon field="date" sortBy={sortBy} />
+                  </button>
                 </th>
-              )}
-            </tr>
-          </thead>
+                <th className="text-left px-2 sm:px-5 py-2 sm:py-3 text-xs font-medium text-gray-500 dark:text-gray-400">
+                  Description
+                </th>
+                <th className="text-left px-2 sm:px-5 py-2 sm:py-3 text-xs font-medium text-gray-500 dark:text-gray-400 hidden sm:table-cell">
+                  Category
+                </th>
+                <th className="text-left px-2 sm:px-5 py-2 sm:py-3 text-xs font-medium text-gray-500 dark:text-gray-400 hidden sm:table-cell">
+                  Type
+                </th>
+                <th className="text-right px-2 sm:px-5 py-2 sm:py-3 text-xs font-medium text-gray-500 dark:text-gray-400">
+                  <button
+                    onClick={() => toggleSort("amount")}
+                    className="flex items-center gap-1 ml-auto px-2 py-1 -mx-2 -my-1 hover:text-gray-700 dark:hover:text-gray-200 rounded"
+                  >
+                    Amount <SortIcon field="amount" sortBy={sortBy} />
+                  </button>
+                </th>
+                {role === "admin" && (
+                  <th className="text-right px-2 sm:px-5 py-2 sm:py-3 text-xs font-medium text-gray-500 dark:text-gray-400 hidden sm:table-cell">
+                    Action
+                  </th>
+                )}
+              </tr>
+            </thead>
 
           {/* Body */}
           <tbody className="divide-y divide-gray-50 dark:divide-gray-800">
