@@ -10,9 +10,9 @@ A modern, responsive financial management dashboard built with React, Redux Tool
 - **Financial Insights**: Data-driven analytics and visualizations to understand spending patterns
 - **Dark Mode**: Toggle between light and dark themes for comfortable viewing
 - **Responsive Design**: Works seamlessly on desktop, tablet, and mobile devices
-- **Role-Based Permissions**: Admin-only data entry with visual feedback for viewers
 - **State Management**: Powered by Redux Toolkit for reliable state handling
 - **Interactive Charts**: Recharts integration for beautiful data visualizations
+- **Responsive** : added responsiveness for different screen sizes
 
 ## Tech Stack
 
@@ -37,7 +37,7 @@ finance-dashboard/
 │   │   ├── insights/  # Insights-specific components
 │   │   ├── transactions/ # Transaction-specific components
 │   │   └── ui/        # Generic UI components
-│   ├── data/          # Static data (categories)
+│   ├── data/          # Data management (if any)
 │   ├── features/      # Redux slices by feature
 │   │   ├── budget/
 │   │   ├── filters/
@@ -54,6 +54,7 @@ finance-dashboard/
 │   ├── App.jsx        # Main app component with routing
 │   ├── main.jsx       # Entry point
 │   ├── index.css      # Global styles
+│   └── mockData.jsx   # Sample data for development
 ├── index.html
 ├── package.json
 ├── vite.config.js
@@ -74,7 +75,7 @@ finance-dashboard/
 
 1. Clone the repository:
 ```bash
-git clone <repository-url>
+git clone https://github.com/deeya321/finance-dashboard
 cd finance-dashboard
 ```
 
@@ -117,19 +118,16 @@ The built files will be in the `dist/` directory.
 
 ### Transactions
 - View all transactions with filtering capabilities
-- Add, edit, and delete transactions (admin only)
+- Add, edit, and delete transactions
 - Categorize transactions
 - Sort by date, amount, or category
 - Search functionality
-- Responsive table design optimized for mobile devices
-- Role-based access control with visual feedback
 
 ### Budgets
-- Set monthly budgets for categories (admin only)
+- Set monthly budgets for categories
 - Track spending against budget limits
 - Visual progress indicators
 - Budget alerts and notifications
-- Disabled "Add Budget" button for viewers with hover tooltips
 
 ### Insights
 - Comprehensive analytics and reports
@@ -145,16 +143,7 @@ The application uses Redux Toolkit with the following slices:
 - `budget`: Budget categories and limits
 - `filters`: UI filtering state
 - `theme`: Application theme (light/dark)
-- `role`: User role/permissions
-
-## Role-Based Access
-
-The application supports role-based permissions:
-
-- **Admin**: Full access to add transactions and budgets, delete data
-- **Viewer**: Read-only access; "Add" buttons are disabled with tooltip "Only admin can add data"
-
-Permissions are managed centrally via Redux state.
+- `role`: User role/permissions (if applicable)
 
 ## Theming
 
